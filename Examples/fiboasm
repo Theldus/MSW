@@ -1,0 +1,39 @@
+########################################################################
+#Copyright (C) 2016  Davidson Francis <davidsondfgl@gmail.com>         #
+#                                                                      #
+#This program is free software: you can redistribute it and/or modify  #
+#it under the terms of the GNU General Public License as published by  #
+#the Free Software Foundation, either version 3 of the License, or     #
+#(at your option) any later version.                                   #
+#                                                                      #
+#This program is distributed in the hope that it will be useful,       #
+#but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+#GNU General Public License for more details.                          #
+#                                                                      #
+#You should have received a copy of the GNU General Public License     #
+#along with this program.  If not, see <http://www.gnu.org/licenses/>  #
+########################################################################
+
+##################
+##FibonAsm, ^.^###
+##################
+
+#Calculation of Fibonacci
+
+mov ax,1   #i
+xor bx,bx  #j
+xor cx,cx  #<-- mem
+mov dx,14  #counter
+
+fibo:
+	add   ax,bx  #i=i+j
+	store cx,ax  #mem[0] = i
+	mov   ax,bx  #i=j
+	load  bx,cx  #j=mem[0]
+	sub   dx,1   #count=count-1
+	jmpp  fibo
+
+halt
+
+#Result in bx
