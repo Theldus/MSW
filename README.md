@@ -5,6 +5,7 @@ features.
 <p align="center">
 <img align="center" src="http://i.imgur.com/XRXsxBN.png" alt="msw overview">
 </p>
+
 #### Architecture
 Inspired by the 8086 Intel and MIPS, but much simpler, its instruction set has 16 instructions and similar registers with Intel. Its general architecture looks like a MIPS unicycle.
 
@@ -32,24 +33,24 @@ Needless to say, supports 16 instructions and 4 registers: AX, BX, CX and DX. <b
 
 The following table illustrates all instructions:
 
-	|Op Code|Instruction|Behavior|
-	|-------|-----------|--------|
-	|0|OR REGDest,REGSource/Imm|REGDest <- REGDest \| REGSource|
-	|1|NOT REGDest|REGDest <- ~REGDest|
-	|2|AND REGDest,REGSource/Imm|REGDest <- REGDest & REGOri|
-	|3|XOR REGDest,REGSource/Imm|REGDest <- REGDest ^ REGOri|
-	|4|ADD REGDest,REGSource/Imm|REGDest <- REGDest + REGOri|
-	|5|SUB REGDest,REGSource/Imm|REGDest <- REGDest - REGOri|
-	|6|MULT REGDest,REGSource/Imm|REGDest <- REGDest * REGOri|
-	|7|DIV REGDest,REGSource/Imm|REGDest <- REGDest / REGOri|
-	|8|MOV REGDest, REGSource|REGDest <- REGSource|
-	|9|MOV REGDest, Imm|REGDest <- Imm|
-	|10|LOAD REGDest, REGSource|REGDest <- MEM[REGSource]|
-	|11|STORE REGDest, REGSource|MEM[REGDest] <- REGSource|
-	|12|JMPZ REGDest/Label|JuMP if Zero|
-	|13|JMPN REGDest/Label|JuMP if Negative|
-	|14|JMPP REGDest/Label|JuMP if Positive|
-	|15|HALT|Halts CPU|
+|Op Code|Instruction|Behavior|
+|-------|-----------|--------|
+|0|OR REGDest,REGSource/Imm|REGDest <- REGDest \| REGSource|
+|1|NOT REGDest|REGDest <- ~REGDest|
+|2|AND REGDest,REGSource/Imm|REGDest <- REGDest & REGOri|
+|3|XOR REGDest,REGSource/Imm|REGDest <- REGDest ^ REGOri|
+|4|ADD REGDest,REGSource/Imm|REGDest <- REGDest + REGOri|
+|5|SUB REGDest,REGSource/Imm|REGDest <- REGDest - REGOri|
+|6|MULT REGDest,REGSource/Imm|REGDest <- REGDest * REGOri|
+|7|DIV REGDest,REGSource/Imm|REGDest <- REGDest / REGOri|
+|8|MOV REGDest, REGSource|REGDest <- REGSource|
+|9|MOV REGDest, Imm|REGDest <- Imm|
+|10|LOAD REGDest, REGSource|REGDest <- MEM[REGSource]|
+|11|STORE REGDest, REGSource|MEM[REGDest] <- REGSource|
+|12|JMPZ REGDest/Label|JuMP if Zero|
+|13|JMPN REGDest/Label|JuMP if Negative|
+|14|JMPP REGDest/Label|JuMP if Positive|
+|15|HALT|Halts CPU|
 	
 #### Assembler
 In order to avoid programming in binary, it developed a Assembler, which takes a file as input and generates a hex file ready
