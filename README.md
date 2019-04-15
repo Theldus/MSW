@@ -1,21 +1,23 @@
-### MSW - Machine with Shuffled Wires
-MSW is a CPU 16-bit, RISC, Unicycle, Harvard, built in [Logisim](http://www.cburch.com/logisim/).
-It was developed in order to be as simple as possible, so also does not have pipeline, branch prediction, cache, among others
-features.
+# MSW - Machine with Shuffled Wires
+MSW is a 16-bit CPU, RISC, Unicycle, Harvard, built in [Logisim](http://www.cburch.com/logisim/).
+
+It is designed to be as simple as possible, so it is not cumbersome to understand the entire circuit, as well as the instruction set and the assembler. It is primarily suitable for students of Computer Architecture. Because of this, it has no pipeline, branch prediction, cache, among other features.
 <p align="center">
 <img align="center" src="http://i.imgur.com/XRXsxBN.png" alt="msw overview">
+<br>
+<i>MSW Overview</i>
 </p>
 
-#### Architecture
-Inspired by the 8086 Intel and MIPS, but much simpler, its instruction set has 16 instructions and similar registers with Intel. Its general architecture looks like a MIPS unicycle.
+## Architecture
+Inspired by the Intel 8086 and MIPS, but much simpler, its instruction set has 16 instructions and similar registers with Intel. Its general architecture looks like a MIPS unicycle.
 
 It is divided into 4 parts:
-- ALU - Arithmetic Logic Unit
-- UControl - Unity Control, responsible for creating control flags throughout the CPU, according to the instruction currently running.
-- BRegs - Bank registers
-- CPU - With the full assembly of the other modules.
+- ALU: Arithmetic Logic Unit
+- UControl:  Unity Control, responsible for creating control flags throughout the CPU, according to the instruction currently running.
+- BRegs: Register Bank.
+- CPU: Final module, containing the full assembly of the other modules.
 
-#### Instruction Set
+## Instruction Set
 The MSW's instructions follows the format below:
 
 	 OpCode      R1   R2              Imm
@@ -28,33 +30,32 @@ and
 	/-------\    /-\ /-\     /------------------\    - Only registers.
 	 0 0 0 0     0 0 0 0     1 1 1 1      1 1 1 1
 
-Needless to say, supports 16 instructions and 4 registers: AX, BX, CX and DX. <br />
+Supports 16 instructions and 4 registers: AX, BX, CX and DX.
 \* Due the use of 0x00FF to identify Register-only instructions, you **shouldn't** use 255 as immediate value.
 
 The following table illustrates all instructions:
 
-|Op Code|Instruction|Behavior|
-|-------|-----------|--------|
-|0|OR REGDest,REGSource/Imm|REGDest <- REGDest \| REGSource|
-|1|NOT REGDest|REGDest <- ~REGDest|
-|2|AND REGDest,REGSource/Imm|REGDest <- REGDest & REGOri|
-|3|XOR REGDest,REGSource/Imm|REGDest <- REGDest ^ REGOri|
-|4|ADD REGDest,REGSource/Imm|REGDest <- REGDest + REGOri|
-|5|SUB REGDest,REGSource/Imm|REGDest <- REGDest - REGOri|
-|6|MULT REGDest,REGSource/Imm|REGDest <- REGDest * REGOri|
-|7|DIV REGDest,REGSource/Imm|REGDest <- REGDest / REGOri|
-|8|MOV REGDest, REGSource|REGDest <- REGSource|
-|9|MOV REGDest, Imm|REGDest <- Imm|
-|10|LOAD REGDest, REGSource|REGDest <- MEM[REGSource]|
-|11|STORE REGDest, REGSource|MEM[REGDest] <- REGSource|
-|12|JMPZ REGDest/Label|JuMP if Zero|
-|13|JMPN REGDest/Label|JuMP if Negative|
-|14|JMPP REGDest/Label|JuMP if Positive|
-|15|HALT|Halts CPU|
+|Op Code|Instruction               |Behavior                       |
+|-------|--------------------------|-------------------------------|
+|0      |OR REGDest,REGSource/Imm  |REGDest <- REGDest \| REGSource|
+|1      |NOT REGDest               |REGDest <- ~REGDest            |
+|2      |AND REGDest,REGSource/Imm |REGDest <- REGDest & REGOri    |
+|3      |XOR REGDest,REGSource/Imm |REGDest <- REGDest ^ REGOri    |
+|4      |ADD REGDest,REGSource/Imm |REGDest <- REGDest + REGOri    |
+|5      |SUB REGDest,REGSource/Imm |REGDest <- REGDest - REGOri    |
+|6      |MULT REGDest,REGSource/Imm|REGDest <- REGDest * REGOri    |
+|7      |DIV REGDest,REGSource/Imm |REGDest <- REGDest / REGOri    |
+|8      |MOV REGDest, REGSource    |REGDest <- REGSource           |
+|9      |MOV REGDest, Imm          |REGDest <- Imm                 |
+|10     |LOAD REGDest, REGSource   |REGDest <- MEM[REGSource]      |
+|11     |STORE REGDest, REGSource  |MEM[REGDest] <- REGSource      |
+|12     |JMPZ REGDest/Label        |JuMP if Zero                   |
+|13     |JMPN REGDest/Label        |JuMP if Negative               |
+|14     |JMPP REGDest/Label        |JuMP if Positive               |
+|15     |HALT                      |Halts CPU                      |
 	
-#### Assembler
-In order to avoid programming in binary, it developed a Assembler, which takes a file as input and generates a hex file ready
-to run and a code like below can be perfectly executed on the CPU:
+## Assembler
+In order to avoid programming directly in binary, MSW also comes with an Assembler, that takes a file as input and generates a hex file ready to run. A code like below can be perfectly executed on the CPU:
 
 	##################
 	##FibonAsm, ^.^###
@@ -84,7 +85,7 @@ To run the generated program (.hex), just load it to the leftmost memory and act
 [Here](https://www.youtube.com/watch?v=QfH0QN9yPt8) is a video of the CPU
 in operation (Portuguese).
 
-#### What comes next?
+## What comes next?
 
 This is my first CPU and I believe there are some design issues in both the CPU and the Assembler (not bugs, just the way
 I developed).
